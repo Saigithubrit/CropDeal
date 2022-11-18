@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+            <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+            <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+            <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+            
+            
+</head>
+<body>
+
+<div  class="container">
+         
+  <table   class="table table-bordered">
+    <thead>
+      <tr  style="background-color: #49c049;">
+        <th style="color:white ; font-weight: bold;">User Id</th>
+        <th style="color:white; font-weight: bold;">Name</th>
+        <th style="color:white;font-weight: bold;">Role</th>
+        <th style="color:white;font-weight: bold;">User Status</th>
+        <th style="color:white;font-weight: bold;">change Status</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of profile">
+      <tr>
+        <td>{{item.userId}}</td>
+        <td>{{item.userName}}</td>
+        <td>{{item.userType}}</td>
+        <td>{{item.userStatus}}</td>
+        <td><button *ngIf="item.userStatus =='ACTIVE'"  (click)="ChangeStatus(item.userId,item.userStatus) "    style="background-color:red; color:white;" class="btn  btn-sm" type="button">INACTIVE</button>
+            <button *ngIf= "item.userStatus =='INACTIVE'" (click)="ChangeStatus(item.userId,item.userStatus)"  style="background-color:rgb(73, 192, 73); color:white;" class="btn  btn-sm" type="button">ACTIVE</button> </td>
+          
+            
+      </tr>
+      
+      
+    </tbody>
+  </table>
+  <section>
+
+    
+  </section>
+  </div>

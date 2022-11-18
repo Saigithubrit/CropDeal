@@ -1,0 +1,155 @@
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+            <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+            <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+            <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+            
+            
+</head>
+<body>
+
+<div  class="container">
+         
+  <table   class="table table-bordered">
+    <thead>
+      <tr  style="background-color: #49c049;">
+        <th style="color:white ; font-weight: bold;">User Id</th>
+        <th style="color:white; font-weight: bold;">Name</th>
+        <th style="color:white;font-weight: bold;">Role</th>
+        <th style="color:white;font-weight: bold;">Invoices</th>
+        
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of profile">
+      <tr>
+        <td>{{item.userId}}</td>
+        <td>{{item.userName}}</td>
+        <td>{{item.userType}}</td>
+        <td><button *ngIf= "item.userType =='Farmer'" (click)="GetInvoices(item.userId); "    style="background-color:rgb(73, 192, 73); color:white;" class="btn  btn-sm" type="button">View Invoice</button>
+            <button *ngIf= "item.userType =='Dealer'" (click)="GetInvoicesDealer(item.userId); "  style="background-color:rgb(73, 192, 73); color:white;" class="btn  btn-sm" type="button">View Invoice</button> </td>
+          
+            
+      </tr>
+      
+      
+    </tbody>
+  </table>
+  </div>
+  <div class="conatianer" id="invoice" #invoice >
+  <div *ngFor="let item of invoices"  class="container" >
+  
+    <div class="thick-line"></div>
+    <div class="row" >
+        <div class="col-xs-12">
+        <div class="invoice-title" >
+          <h2 style="font-weight: bold; color:#49c049;">Invoice</h2><h3 style="font-weight: bold; color:#49c049;" class="pull-right">Order # {{item.invoiceId}}</h3>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-6">
+            <address>
+            <strong style="font-weight: bold; color:#49c049;">Farmer Account number</strong><br>
+                       {{item.farmerAccNumber}}  
+              
+            </address>
+          </div>
+          <div class="col-xs-6 text-right">
+            <address>
+              <strong style="font-weight: bold; color:#49c049;">Dealer Account Number</strong><br>
+                    {{item.dealerAccNumber}}  
+            </address>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <address>
+              <strong style="font-weight: bold; color:#49c049;">Payment Method:</strong><br>
+              Account Transfer<br>
+            </address>
+          </div>
+          <div class="col-xs-6 text-right">
+            <address>
+              <strong style="font-weight: bold; color:#49c049;">Order Date:</strong><br>
+              {{item.invoiceDate | date:'dd-MM-yyyy'}}<br><br>
+            </address>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div style="background-color: #49c049;" class="panel-heading">
+            <h3 style="background-color: #49c049;"class="panel-title"><strong style="font-weight: bold; color:white">Order summary</strong></h3>
+          </div>
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table table-condensed">
+                <thead>
+                                <tr>
+                      <td><strong style="font-weight: bold;">Item</strong></td>
+                                    <td class="text-center"><strong >Crop Type</strong></td>
+                      <td class="text-center"><strong>Quantity</strong></td>
+                      <td class="text-right"><strong >Total</strong></td>
+                                </tr>
+                </thead>
+                <tbody>
+                  <!-- foreach ($order->lineItems as $line) or some such thing here -->
+                  <tr>
+                    <td>{{item.cropName}}</td>
+                                    <td class="text-center">{{item.cropType}}</td>
+                    <td class="text-center">{{item.cropQty}}</td>
+                    <td class="text-right">{{item.orderTotal-199}}</td>
+                  </tr>
+                               
+                               
+                  <tr>
+                    <td class="thick-line"></td>
+                    <td class="thick-line"></td>
+                    <td class="thick-line text-center"><strong>Subtotal</strong></td>
+                    <td class="thick-line text-right">Rs.{{item.orderTotal-199}}</td>
+                  </tr>
+                  <tr>
+                    <td class="no-line"></td>
+                    <td class="no-line"></td>
+                    <td class="no-line text-center"><strong>Shipping</strong></td>
+                    <td class="no-line text-right">0.00</td>
+                  </tr>
+                  <tr>
+                    <td class="no-line"></td>
+                    <td class="no-line"></td>
+                    <td class="no-line text-center"><strong>Total</strong></td>
+                    <td class="no-line text-right">Rs.{{item.orderTotal-199}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+</div>
+
+
+</div>
+<button style="padding-bottom:10px; align-items: center; " *ngIf=" log !=1;"  (click)= "generatePDF();"  style="background-color:rgb(73, 192, 73); color:white; font-weight: bold;" class="btn  btn-lg" type="button">Download All Invoices</button> 
+<section>
+
+</section>
+
+</body>
+</html>

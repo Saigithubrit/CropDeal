@@ -1,0 +1,38 @@
+<div class="container" style="margin-top: 50px; padding-bottom: 90px; width:590px;">
+    <div class="mb-3">
+    <h1 style="color:#4dac4d; font-weight:bold;">Update</h1>
+    </div>
+    <form [formGroup]="updateform" (ngSubmit)="update()">
+
+        
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Address</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" formControlName="userAddress">
+        </div>
+        <div *ngIf="f.userAddress.touched && f.userAddress.invalid" class="alert alert-danger">
+          <div *ngIf="f.userAddress.errors?.['required']">Address is required.</div>
+          <div *ngIf="f.userAddress.errors?.['pattern']">Address is Invalid</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label"> Mobile Number</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" formControlName="userPhnumber">
+       </div>
+
+      <div *ngIf="f.userPhnumber.touched && f.userPhnumber.invalid" class="alert alert-danger">
+        <div *ngIf="f.userPhnumber.errors?.['required']">Mobile number is required.</div>
+        <div *ngIf="f.userPhnumber.errors?.['pattern']">Mobile number is Invalid.</div>
+        </div>
+    
+     <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label"> Email</label>
+        <input type="email" class="form-control" id="exampleInputPassword1" formControlName="userEmail">
+      </div>
+      <div *ngIf="f.userEmail.touched && f.userEmail.invalid" class="alert alert-danger">
+        <div *ngIf="f.userEmail.errors?.['required']">Email is required.</div>
+        <div *ngIf="f.userEmail.errors?.['pattern']">Email is Invalid.</div>
+        
+      </div>
+      <button type="submit" class="btn btn-success">Update</button>
+    </form>
+</div>

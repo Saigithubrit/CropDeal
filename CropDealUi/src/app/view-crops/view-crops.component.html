@@ -1,0 +1,28 @@
+<div *ngFor="let item of cropdata" class="container-lg mt-3">
+    <div class="d-flex justify-content-center row">
+        <div class="col-md-10">
+            <div class="row p-2 bg-white border rounded">
+                <div class="col-lg-4 mt-2"><img class="img-fluid img-responsive rounded product-image" src="{{item.cropImage}}"></div>
+                <div class="col-lg-3 mt-5">
+                    <h4 style="color:rgb(73, 192, 73);font-weight:bold;  text-transform: uppercase;">{{item.cropName}}</h4>
+                    <h6 style="text-transform:uppercase;">{{item.cropType}}</h6>
+
+                    <div class="d-flex flex-row">
+                        <div class="mt-1 mb-10 spec-1"><span style="color:black">Quantity:  </span><span style="color:black">{{item.cropQty}}</span><span style="color:black">  Kgs</span><span><br></span></div>
+                    </div>
+                    <div class="mt-1 mb-1 spec-1"><span style="color:black">Farmer Name:  </span><span style="color:black">{{item.farmerName}}</span><span><br></span></div>
+                    <div class="mt-1 mb-1 spec-1"><span style="color:black">Farmer Mobile:  </span><span style="color:black"> {{item.farmerPhnumber}}</span><span><br></span></div>
+                    <div class="mt-1 mb-1 spec-1"><span style="color:black">Farmer Address:  </span><span style="color:black"> {{item.farmerAddress}}</span><span></span><span><br></span></div>
+                    <p class="text-justify text-truncate para mb-0"><br><br></p>
+                </div>
+                <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                    <div class="d-flex flex-row align-items-center">
+                        <h4 class="mr-1">Rs.{{item.cropPrice - 199}}.00</h4><span style="text-decoration:line-through">Rs.{{item.cropPrice}}.00</span>
+                    </div>
+                    <h6 class="text-success">Free shipping</h6>
+                    <div class="d-flex flex-column mt-2"><button (click)="payment(item.cropAdId,item.farmerId)"  style="background-color:rgb(73, 192, 73); color:white;" class="btn  btn-sm" type="button">Pay now</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

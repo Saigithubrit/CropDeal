@@ -1,0 +1,79 @@
+<div class="container" style="margin-top: 50px; padding-bottom: 90px; width:590px;">
+    <div class="mb-3">
+    <h1 style="color:#4dac4d; font-weight: bold;">Post your Crop On Sale</h1>
+    </div>
+    <form [formGroup]="cropform" (ngSubmit)="cropOnSale()">
+
+        
+            
+
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Enter Your Crop Name</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+          formControlName="cropName">
+         </div>
+          <div *ngIf="f.cropName.touched && f.cropName.invalid" class="alert alert-danger">
+            <div *ngIf="f.cropName.errors?.['required']">Crop Name is required.</div>
+            <div *ngIf="f.cropName.errors?.['pattern']">Crop Name is Invalid.</div>
+        </div>
+
+        <div class="mb-3">
+          <h6>choose your Crop Family</h6>
+          <div class="dropdown mb-3">
+  
+          </div>
+              
+             <ul> <select formControlName="cropId" class="form-control" (change)="changeRole($event)">
+              <option value="" disabled selected>Select Crop Family</option>
+              <option *ngFor="let Role of croplist" value="{{Role.cropId}}">{{Role.cropName}}</option>
+               </select>
+  
+              </ul>
+              <div *ngIf="f.cropId.touched && f.cropId.invalid" class="alert alert-danger">
+                <div *ngIf="f.cropId.errors?.['required']">crop family is required.</div>
+          </div>
+              
+              
+        </div>
+
+        <div class="mb-3">
+          <h6>choose Crop Type</h6>
+          <div class="dropdown mb-3">
+  
+          </div>
+              
+             <ul> <select formControlName="cropType" class="form-control" (change)="changeRole($event)">
+              <option value="" disabled selected>Select Crop Type</option>
+              <option *ngFor="let Role of croptype" >{{Role}}</option>
+               </select>
+  
+              </ul>
+              <div *ngIf="f.cropType.touched && f.cropType.invalid" class="alert alert-danger">
+                <div *ngIf="f.cropType.errors?.['required']">crop Type is required.</div>
+          </div>
+              
+              
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label"> Crop Quantity </label>
+          <input type="text" class="form-control" id="exampleInputPassword1" formControlName="cropQty">
+         </div>
+  
+        <div *ngIf="f.cropQty.touched && f.cropQty.invalid" class="alert alert-danger">
+          <div *ngIf="f.cropQty.errors?.['required']">Crop Quantity is required.</div>
+          <div *ngIf="f.cropQty.errors?.['pattern']">Crop Quantity is Invalid.</div>
+          </div>
+      
+        
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Crop Price</label>
+          <input type="number" class="form-control" id="exampleInputPassword1" formControlName="cropPrice">
+        </div>
+        <div *ngIf="f.cropPrice.touched && f.cropPrice.invalid" class="alert alert-danger">
+          <div *ngIf="f.cropPrice.errors?.['required']">crop Price is required.</div>
+          <div *ngIf="f.cropPrice.errors?.['pattern']">crop Price is Invalid.</div>
+      </div>
+        <button type="submit" class="btn btn-success">Post Crop</button>
+   </form>
+      </div>
